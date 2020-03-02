@@ -19,7 +19,7 @@ class StoryViewModel : ViewModel() {
     private var beginDay = MutableLiveData<String>().apply { value = String() }
     private var endDay = MutableLiveData<String>().apply { value = String() }
     private var sortOrderID = MutableLiveData<Int>().apply { value = -1 }
-    private var sortString= MutableLiveData<Int>().apply { value = -1 }
+    private var sortStr= MutableLiveData<String>().apply { value = String()  }
 
 
     private val baseReponse: BaseReponse by lazy { BaseReponse() }
@@ -49,6 +49,10 @@ class StoryViewModel : ViewModel() {
                 }, {
                 })
         )
+    }
+
+    fun getListSearchSize():Int{
+        return listSearchStoryLiveData.value?.size ?: 0
     }
 
     fun getListSearchStory(strSearch: String) {
@@ -110,6 +114,14 @@ class StoryViewModel : ViewModel() {
 
     fun setSortOrder(id: Int) {
         sortOrderID.value = id
+    }
+
+    fun getSortStr(): String {
+        return sortStr.value.toString()
+    }
+
+    fun setSortStr(str: String) {
+        sortStr.value = str
     }
 
 }

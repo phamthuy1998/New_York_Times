@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
@@ -18,110 +18,163 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_bgday"
-        android:layout_width="70dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_filter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="50dp"
-        android:text="@string/begin_day"
-        android:textColor="@color/colorTxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_dl" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title_dl">
 
-    <EditText
-        android:id="@+id/edt_bgdate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:focusable="false"
-        android:hint="@string/dd_mm_yyyy"
-        android:inputType="none"
-        android:textColor="@color/colorTxt"
-        android:textColorHint="@color/colorTxtHint"
-        android:theme="@style/MyEdtStyle"
-        app:layout_constraintBottom_toBottomOf="@id/tv_bgday"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/tv_bgday"
-        app:layout_constraintTop_toTopOf="@id/tv_bgday"
-        app:layout_constraintVertical_bias="0.416" />
-
-    <TextView
-        android:id="@+id/tv_end_day"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="20dp"
-        android:text="@string/end_date"
-        android:textColor="@color/colorTxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_bgday" />
-
-    <EditText
-        android:id="@+id/edt_end_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:focusable="false"
-        android:hint="@string/dd_mm_yyyy"
-        android:textColor="@color/colorTxt"
-        android:textColorHint="@color/colorTxtHint"
-        android:theme="@style/MyEdtStyle"
-        app:layout_constraintBottom_toBottomOf="@id/tv_end_day"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_end_day"
-        app:layout_constraintTop_toTopOf="@id/tv_end_day" />
-
-    <TextView
-        android:id="@+id/tv_sort_order"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="20dp"
-        android:text="@string/sort_order"
-        android:textColor="@color/colorTxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_end_day" />
-
-    <RadioGroup
-        android:id="@+id/radg_sort"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:backgroundTint="@color/colorLauncher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_sort_order"
-        app:layout_constraintTop_toTopOf="@id/tv_sort_order">
-
-        <RadioButton
-            android:id="@+id/newest"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_bgday"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="@string/newest" />
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="50dp"
+            android:text="@string/begin_day"
+            android:textColor="@color/colorTxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/oldest"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:checked="false"
-            android:text="@string/oldest" />
+            android:layout_marginEnd="@dimen/default_margin"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="@id/tv_bgday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_bgday"
+            app:layout_constraintTop_toTopOf="@id/tv_bgday">
 
-        <RadioButton
-            android:id="@+id/relevance"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_bgdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/dd_mm_yyyy"
+                android:inputType="none"
+                android:textColor="@color/colorTxt"
+                android:textColorHint="@color/colorTxtHint"
+                android:theme="@style/MyEdtStyle" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/tv_end_day"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="20dp"
+            android:text="@string/end_date"
+            android:textColor="@color/colorTxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_bgday" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:checked="false"
-            android:text="@string/relevance" />
-    </RadioGroup>
+            android:layout_marginEnd="@dimen/default_margin"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="@id/tv_end_day"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_end_day"
+            app:layout_constraintTop_toTopOf="@id/tv_end_day">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/dd_mm_yyyy"
+                android:textColor="@color/colorTxt"
+                android:textColorHint="@color/colorTxtHint"
+                android:theme="@style/MyEdtStyle" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_sort_order"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="20dp"
+            android:text="@string/sort_order"
+            android:textColor="@color/colorTxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_end_day" />
+
+        <RadioGroup
+            android:id="@+id/radg_sort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:backgroundTint="@color/colorLauncher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_sort_order"
+            app:layout_constraintTop_toTopOf="@id/tv_sort_order">
+
+            <RadioButton
+                android:id="@+id/newest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/newest" />
+
+            <RadioButton
+                android:id="@+id/oldest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:checked="false"
+                android:text="@string/oldest" />
+
+            <RadioButton
+                android:id="@+id/relevance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:checked="false"
+                android:text="@string/relevance" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_filter">
+
+        <TextView
+            android:id="@+id/tv_new_desk"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:text="@string/section"
+            android:textColor="@color/colorTxt"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorLauncher"
+            android:textColor="@color/colorTxt" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_save"
@@ -135,9 +188,9 @@
         android:padding="@dimen/default_margin"
         android:text="@string/save"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radg_sort" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_cancel"

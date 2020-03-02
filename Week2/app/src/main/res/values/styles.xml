@@ -19,4 +19,34 @@
         <item name="colorControlActivated">#673AB7</item>
     </style>
 
+    <style name="text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txtNormalSize</item>
+        <item name="android:textColor">@color/colorTxtNormal</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="buttonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txtNormalSize</item>
+        <item name="android:textColor">@color/colorBtn</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="title_text" parent="text">
+        <item name="android:textColor">@color/colorTxtTitle</item>
+        <item name="android:textSize">@dimen/txtTileSize</item>
+        <item name="android:layout_margin">@dimen/default_margin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="description_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txtNormalSize</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
 </resources>

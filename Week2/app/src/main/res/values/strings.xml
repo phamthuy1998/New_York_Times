@@ -43,4 +43,13 @@
     <string name="cancel">Cancel</string>
     <string name="section">Section</string>
     <string name="end_date">End date</string>
+    <string name="artical_search">Artical search</string>
+    <string name="top_stories">Top stories</string>
+    <string name="menu_filter">Menu filter</string>
+    <string name="image">Image</string>
+    <string name="top_stories_api">Top Stories API</string>
+    <string name="title_of_paragraph">Title of paragraph</string>
+    <string name="image_of_paragraph">Image of paragraph</string>
+    <string name="overview">Overview</string>
+    <string name="open_this_page_on_website">Open this page on website</string>
 </resources>

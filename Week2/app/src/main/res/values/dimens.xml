@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">10dp</dimen>
+    <dimen name="txtNormalSize">16sp</dimen>
+    <dimen name="txtTileSize">18sp</dimen>
+    <dimen name="txtSmallSize">16sp</dimen>
 </resources>

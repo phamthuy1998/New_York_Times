@@ -7,20 +7,23 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_main.*
 import thuy.ptithcm.week2.R
+import thuy.ptithcm.week2.ui.adapter.MyFragmentPagerAdapter
 import thuy.ptithcm.week2.ui.fragment.HomeFragment
+import thuy.ptithcm.week2.ui.fragment.SearchFragment
 import thuy.ptithcm.week2.viewmodel.StoryViewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
-    companion object {
-        private var instance: MainActivity? = null
-        fun getInstance(): MainActivity {
+    private val homeFragment by lazy {
+        HomeFragment()
+    }
 
-            if (instance == null) instance = MainActivity()
-            return instance!!
-        }
+    private val searchFragment by lazy {
+        SearchFragment()
     }
 
     private lateinit var viewModel: StoryViewModel
@@ -28,17 +31,37 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if(!isNetworkAvailable()) Toast.makeText(this, "No internet!", Toast.LENGTH_LONG).show();
+        if (!isNetworkAvailable()) Toast.makeText(this, "No internet!", Toast.LENGTH_LONG).show()
 
         inItValue()
-        showFragment(HomeFragment.getInstance())
 
+        val viewPagerAdapter = MyFragmentPagerAdapter(supportFragmentManager)
+
+        viewPagerAdapter.addFragment(homeFragment, "Home fragment")
+        viewPagerAdapter.addFragment(searchFragment, "Category fragment")
+
+        viewPagerHome.adapter = viewPagerAdapter
+        viewPagerHome.addOnPageChangeListener(this)
+
+        botNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.bot_nav_home -> {
+                    viewPagerHome.currentItem = 0
+                    true
+                }
+                R.id.bot_nav_search -> {
+                    viewPagerHome.currentItem = 1
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun inItValue() {
         viewModel = this.run {
             ViewModelProviders.of(this)[StoryViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+        }
     }
 
     private fun isNetworkAvailable(): Boolean {
@@ -48,10 +71,22 @@ class MainActivity : AppCompatActivity() {
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
     }
 
-    private fun showFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frmMain, fragment)
-            .commit()
+    override fun onPageScrollStateChanged(state: Int) {
+
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+    }
+
+    override fun onPageSelected(position: Int) {
+        when (position) {
+            0 -> {
+                botNavigation.selectedItemId = R.id.bot_nav_home
+            }
+            1 -> {
+                botNavigation.selectedItemId = R.id.bot_nav_search
+            }
+        }
     }
 
 }

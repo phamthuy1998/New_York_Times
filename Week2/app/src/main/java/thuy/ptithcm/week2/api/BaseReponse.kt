@@ -73,19 +73,19 @@ class BaseReponse {
         return buildRequest(_myApi.getListSearch(strSearch = strSearch))
     }
 
-    fun getListFilterStory(
-        strSearch: String,
-        beginDay: String,
-        endDate: String,
-        sort: String
-    ): Single<StorySearch> {
-        return buildRequest(
-            _myApi.filterSearch(
-                strSearch = strSearch,
-                beginDate = beginDay,
-                endDate = endDate,
-                sort = sort
-            )
-        )
-    }
+//    fun getListFilterStory(
+//        strSearch: String,
+//        beginDay: String,
+//        endDate: String,
+//        sort: String
+//    ): Single<StorySearch> {
+//        return buildRequest(
+//            _myApi.filterSearch(
+//                strSearch = strSearch,
+//                beginDate = beginDay,
+//                endDate = endDate,
+//                sort = sort
+//            )
+//        )
+//    }
 }

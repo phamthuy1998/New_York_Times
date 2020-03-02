@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="thuy.ptithcm.week2">
 
+    <uses-sdk tools:overrideLibrary="android.support.customtabs" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-sdk tools:overrideLibrary="android.support.customtabs"/>
 
     <application
         android:icon="@drawable/ic_newspaper"
@@ -14,16 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.activity.DetailActivity"></activity>
         <activity
             android:name=".ui.activity.LauncherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.activity.MainActivity" />
     </application>
 

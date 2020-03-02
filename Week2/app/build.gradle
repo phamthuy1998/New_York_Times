@@ -34,6 +34,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //    <com.google.android.material.bottomnavigation.BottomNavigationView
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha05'
+
     // Using SwipeRefreshLayout
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -73,4 +77,6 @@ dependencies {
     // Chrome Custom Tabs
     //noinspection GradleCompatible
     implementation 'com.android.support:customtabs:25.2.0'
+
+    implementation 'com.google.android.material:material:1.1.0'
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bot_nav_home"
+        android:contentDescription="@string/top_stories"
+        android:icon="@drawable/ic_story_select"
+        android:title="@string/top_stories" />
+
+    <item
+        android:id="@+id/bot_nav_search"
+        android:contentDescription="@string/artical_search"
+        android:icon="@drawable/ic_search_select"
+        android:title="@string/artical_search" />
+
+</menu>

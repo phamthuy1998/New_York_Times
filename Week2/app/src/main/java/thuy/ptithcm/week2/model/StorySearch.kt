@@ -1,24 +1,29 @@
 package thuy.ptithcm.week2.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-
+import kotlinx.android.parcel.Parcelize
+@Parcelize
 data class StorySearch(
     val copyright: String?,
     val response: Response?,
     val status: String
-)
+):Parcelable
 
+@Parcelize
 data class Response(
     val docs: ArrayList<Doc>?,
     val meta: Meta?
-)
+):Parcelable
 
+@Parcelize
 data class Meta(
     val hits: Int?,
     val offset: Int?,
     val time: Int?
-)
+):Parcelable
 
+@Parcelize
 data class Doc(
     @SerializedName("_id")
     val id: String?,
@@ -50,29 +55,20 @@ data class Doc(
     val webUrl: String?,
     @SerializedName("word_count")
     val wordCount: Int?
-)
+) :Parcelable
 
+@Parcelize
 data class MultimediaSearch(
-    @SerializedName("crop_name")
-    val cropName: String?,
     val height: Int?,
-    val legacy: Legacy?,
     val rank: Int?,
-    val subType: String?,
-    val subtype: String?,
     val type: String?,
     val url: String?,
     val width: Int?
-)
+):Parcelable
 
-data class Legacy(
-    val xlarge: String?,
-    val xlargeheight: Int?,
-    val xlargewidth: Int?
-)
-
+@Parcelize
 data class Headline(
     val main: String?,
     @SerializedName("print_headline")
     val printHeadline: String?
-)
+):Parcelable

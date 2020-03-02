@@ -1,7 +1,9 @@
 package thuy.ptithcm.week2.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-
+import kotlinx.android.parcel.Parcelize
+@Parcelize
 data class Stories(
     val copyright: String?,
     @SerializedName("last_updated")
@@ -11,8 +13,9 @@ data class Stories(
     val results: List<Story>?,
     val section: String?,
     val status: String?
-)
+):Parcelable
 
+@Parcelize
 data class Story(
     val abstract: String?,
     val byline: String?,
@@ -20,18 +23,12 @@ data class Story(
     val createdDate: String?,
     @SerializedName("des_facet")
     val desFacet: List<String>?,
-    @SerializedName("geo_facet")
-    val geoFacet: List<Any>?,
     @SerializedName("item_type")
     val itemType: String?,
     val kicker: String?,
     @SerializedName("material_type_facet")
     val materialTypeFacet: String?,
     val multimedia: List<Multimedia>?,
-    @SerializedName("org_facet")
-    val orgFacet: List<Any>?,
-    @SerializedName("per_facet")
-    val perFacet: List<Any>?,
     @SerializedName("published_date")
     val publishedDate: String?,
     val section: String?,
@@ -43,8 +40,9 @@ data class Story(
     val updatedDate: String?,
     val uri: String?,
     val url: String?
-)
+):Parcelable
 
+@Parcelize
 data class Multimedia(
     val caption: String,
     val copyright: String,
@@ -54,5 +52,5 @@ data class Multimedia(
     val type: String,
     val url: String,
     val width: Int
-)
+):Parcelable
 

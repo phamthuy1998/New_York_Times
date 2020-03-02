@@ -11,30 +11,36 @@ import com.bumptech.glide.request.RequestOptions
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.item_story.view.*
 import thuy.ptithcm.week2.R
+import thuy.ptithcm.week2.model.Doc
 import thuy.ptithcm.week2.model.Story
+import thuy.ptithcm.week2.util.IMAGE_URL
 
-class StoryAdapter(
-    private var listStories: ArrayList<Story>? = arrayListOf(),
-//    var adapterEvent: AdapterEvent,
-    val itemClick: (story: Story) -> Unit
+class StorySearchAdapter(
+    private var listStoriesSearch: ArrayList<Doc>? = arrayListOf(),
+//    var adapterEvent: AdapterEvent
+    private val itemClick: (doc: Doc) -> Unit
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): BaseViewHolder<*> {
-
         val view = LayoutInflater
             .from(viewGroup.context)
             .inflate(R.layout.item_story, viewGroup, false)
-        StoryViewHolder(view, itemClick)
-        return StoryViewHolder(view, itemClick)
+        StorySearchViewHolder(view)
+        return StorySearchViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return listStories?.size ?: 0
+        return listStoriesSearch?.size ?: 0
     }
 
-    fun addDataStories(list: ArrayList<Story>) {
-        listStories = arrayListOf()
-        listStories = list
+    fun updateDataSearch(list: ArrayList<Doc>) {
+        listStoriesSearch?.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    fun addDataStoriesSearch(list: ArrayList<Doc>) {
+        listStoriesSearch = arrayListOf()
+        listStoriesSearch = list
         notifyDataSetChanged()
     }
 
@@ -46,26 +52,30 @@ class StoryAdapter(
         return p0.toLong()
     }
 
-    inner class StoryViewHolder(
-        itemView: View,
-        val itemClick: (story: Story) -> Unit
+    inner class StorySearchViewHolder(
+        itemView: View
     ) : BaseViewHolder<View>(itemView) {
         override fun bind(position: Int) {
-           val story = listStories?.get(position)
+            val storySearch = listStoriesSearch?.get(position)
             //set image rounded
             val multi = MultiTransformation<Bitmap>(
                 RoundedCornersTransformation(7, 0, RoundedCornersTransformation.CornerType.ALL)
             )
-            Glide.with(itemView)
-                .load(story?.multimedia?.get(1)?.url)
-                .error(R.drawable.no_image)
-                .placeholder(R.drawable.ic_image_load)
-                .apply(RequestOptions.bitmapTransform(multi))
-                .into(itemView.iv_story)
-            itemView.tv_title_story.text = story?.title
+            if (storySearch?.multimedia?.size != 0)
+                Glide.with(itemView)
+                    .load(IMAGE_URL + storySearch?.multimedia?.get(0)?.url)
+                    .error(R.drawable.no_image)
+                    .apply(RequestOptions.bitmapTransform(multi))
+                    .into(itemView.iv_story)
+            else
+                Glide.with(itemView)
+                    .load(R.drawable.no_image)
+                    .apply(RequestOptions.bitmapTransform(multi))
+                    .into(itemView.iv_story)
+            itemView.tv_title_story.text = storySearch?.headline?.main
 
             itemView.setOnClickListener {
-                story?.let { it1 -> itemClick(it1) }
+                storySearch?.let { it1 -> itemClick(it1) }
             }
         }
     }
