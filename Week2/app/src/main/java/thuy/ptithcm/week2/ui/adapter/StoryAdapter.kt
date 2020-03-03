@@ -57,7 +57,7 @@ class StoryAdapter(
                 RoundedCornersTransformation(7, 0, RoundedCornersTransformation.CornerType.ALL)
             )
             Glide.with(itemView)
-                .load(story?.multimedia?.get(1)?.url)
+                .load(story?.multimedia?.get(0)?.url)
                 .error(R.drawable.no_image)
                 .placeholder(R.drawable.ic_image_load)
                 .apply(RequestOptions.bitmapTransform(multi))

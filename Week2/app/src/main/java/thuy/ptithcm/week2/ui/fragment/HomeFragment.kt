@@ -13,16 +13,16 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.deishelon.roundedbottomsheet.RoundedBottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_filter.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import thuy.ptithcm.week2.R
 import thuy.ptithcm.week2.model.Story
 import thuy.ptithcm.week2.ui.activity.DetailActivity
-import thuy.ptithcm.week2.ui.adapter.GridItemDecoration
 import thuy.ptithcm.week2.ui.adapter.StoryAdapter
-import thuy.ptithcm.week2.util.arrSection
+import thuy.ptithcm.week2.utils.arrSection
 import thuy.ptithcm.week2.viewmodel.StoryViewModel
 
 
@@ -74,11 +74,6 @@ class HomeFragment : Fragment() {
     private fun showDialogSection() {
         val mBottomSheetDialog = RoundedBottomSheetDialog(requireContext())
         val dialog = layoutInflater.inflate(R.layout.dialog_filter, null)
-
-//        val dialog = Dialog(requireContext())
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        dialog.setCancelable(false)
-//        dialog.setContentView(R.layout.dialog_filter)
         dialog.edt_bgdate.isEnabled = false
         dialog.edt_end_date.isEnabled = false
         dialog.newest.isEnabled = false
@@ -140,9 +135,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun inItView() {
+//        rv_story.adapter = storyAdapter
+//        rv_story.layoutManager = GridLayoutManager(requireContext(), 4)
+//        rv_story.addItemDecoration(GridItemDecoration(10, 4))
+
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        rv_story.layoutManager = staggeredGridLayoutManager
         rv_story.adapter = storyAdapter
-        rv_story.layoutManager = GridLayoutManager(requireContext(), 4)
-        rv_story.addItemDecoration(GridItemDecoration(10, 4))
     }
 
     private fun itemStoryClick(story: Story) {

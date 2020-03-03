@@ -7,13 +7,11 @@ import android.view.View
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.item_story.view.*
 import thuy.ptithcm.week2.R
 import thuy.ptithcm.week2.model.Doc
 import thuy.ptithcm.week2.model.Story
-import thuy.ptithcm.week2.util.IMAGE_URL
+import thuy.ptithcm.week2.utils.IMAGE_URL
 
 class DetailActivity : AppCompatActivity() {
 

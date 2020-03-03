@@ -4,4 +4,5 @@
     <dimen name="txtNormalSize">16sp</dimen>
     <dimen name="txtTileSize">18sp</dimen>
     <dimen name="txtSmallSize">16sp</dimen>
+    <dimen name="cornerRadius">5dp</dimen>
 </resources>

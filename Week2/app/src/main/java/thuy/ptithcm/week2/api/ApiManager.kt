@@ -6,8 +6,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import thuy.ptithcm.week2.model.Stories
 import thuy.ptithcm.week2.model.StorySearch
-import thuy.ptithcm.week2.util.API_KEY
-import thuy.ptithcm.week2.util.arrSection
+import thuy.ptithcm.week2.utils.API_KEY
+import thuy.ptithcm.week2.utils.arrSection
 
 interface ApiManager {
 

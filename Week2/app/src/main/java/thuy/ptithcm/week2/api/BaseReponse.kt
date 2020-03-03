@@ -10,10 +10,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import thuy.ptithcm.week2.model.FilterSearch
 import thuy.ptithcm.week2.model.Stories
 import thuy.ptithcm.week2.model.StorySearch
-import thuy.ptithcm.week2.util.BASE_URL
+import thuy.ptithcm.week2.utils.BASE_URL
 
 class BaseReponse {
     private val _myApi: ApiManager by lazy {

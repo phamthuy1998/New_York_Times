@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_story"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/default_margin"
+    app:cardCornerRadius="@dimen/cornerRadius"
+    app:cardElevation="@dimen/cornerRadius">
 
-    <ImageView
-        android:id="@+id/iv_story"
-        android:scaleType="centerCrop"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_margin="@dimen/default_margin"
-        android:contentDescription="@string/image" />
-
-    <TextView
-        android:id="@+id/tv_title_story"
-        android:layout_width="75dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="@string/title_of_story"
-        android:textColor="#000" />
+        android:padding="@dimen/default_margin">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv_story"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image" />
+
+        <TextView
+            android:id="@+id/tv_title_story"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/title_of_story"
+            android:textColor="#000"
+            app:layout_constraintEnd_toEndOf="@id/iv_story"
+            app:layout_constraintStart_toStartOf="@id/iv_story"
+            app:layout_constraintTop_toBottomOf="@id/iv_story" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

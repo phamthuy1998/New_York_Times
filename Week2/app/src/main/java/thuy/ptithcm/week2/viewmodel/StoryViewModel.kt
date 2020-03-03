@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 import thuy.ptithcm.week2.api.BaseReponse
 import thuy.ptithcm.week2.model.Doc
 import thuy.ptithcm.week2.model.Story
-import thuy.ptithcm.week2.util.arrSection
+import thuy.ptithcm.week2.utils.arrSection
 
 class StoryViewModel : ViewModel() {
     var listStoryLiveData = MutableLiveData<ArrayList<Story>>().apply { value = arrayListOf() }

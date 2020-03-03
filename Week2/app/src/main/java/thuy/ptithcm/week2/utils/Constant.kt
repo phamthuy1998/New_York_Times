@@ -1,4 +1,4 @@
-package thuy.ptithcm.week2.util
+package thuy.ptithcm.week2.utils
 
 const val BASE_URL = "https://api.nytimes.com/svc/"
 

@@ -12,8 +12,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.item_story.view.*
 import thuy.ptithcm.week2.R
 import thuy.ptithcm.week2.model.Doc
-import thuy.ptithcm.week2.model.Story
-import thuy.ptithcm.week2.util.IMAGE_URL
+import thuy.ptithcm.week2.utils.IMAGE_URL
 
 class StorySearchAdapter(
     private var listStoriesSearch: ArrayList<Doc>? = arrayListOf(),
@@ -59,18 +58,21 @@ class StorySearchAdapter(
             val storySearch = listStoriesSearch?.get(position)
             //set image rounded
             val multi = MultiTransformation<Bitmap>(
-                RoundedCornersTransformation(7, 0, RoundedCornersTransformation.CornerType.ALL)
+                RoundedCornersTransformation(5, 0, RoundedCornersTransformation.CornerType.ALL)
             )
+
             if (storySearch?.multimedia?.size != 0)
                 Glide.with(itemView)
                     .load(IMAGE_URL + storySearch?.multimedia?.get(0)?.url)
                     .error(R.drawable.no_image)
+                    .placeholder(R.drawable.ic_image_load)
                     .apply(RequestOptions.bitmapTransform(multi))
                     .into(itemView.iv_story)
             else
                 Glide.with(itemView)
                     .load(R.drawable.no_image)
                     .apply(RequestOptions.bitmapTransform(multi))
+                    .placeholder(R.drawable.ic_image_load)
                     .into(itemView.iv_story)
             itemView.tv_title_story.text = storySearch?.headline?.main
 
