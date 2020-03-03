@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.deishelon.roundedbottomsheet.RoundedBottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_filter.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import thuy.ptithcm.week2.R
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var storyViewModel: StoryViewModel
+    private var showDialog = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,14 +50,17 @@ class HomeFragment : Fragment() {
         swipeContainer.setColorSchemeResources(
             R.color.colorBtn
         )
-
+        progressBarHome.visibility = View.VISIBLE
         inItView()
         bindings()
         addEvent()
     }
 
     private fun addEvent() {
-        btn_menu_section.setOnClickListener { showDialogSection() }
+        btn_menu_section.setOnClickListener {
+            if (!showDialog)
+                showDialogSection()
+        }
         swipeContainer.setOnRefreshListener { refreshLayout() }
     }
 
@@ -69,7 +74,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDialogSection() {
-        val dialog = Dialog(requireContext(), android.R.style.Theme_Material_Light_NoActionBar)
+        val mBottomSheetDialog = RoundedBottomSheetDialog(requireContext())
+        val sheetView = layoutInflater.inflate(R.layout.dialog_filter, null)
+
+        val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_filter)
@@ -78,7 +86,6 @@ class HomeFragment : Fragment() {
         dialog.newest.isEnabled = false
         dialog.oldest.isEnabled = false
         dialog.relevance.isEnabled = false
-
         var section = ""
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -105,12 +112,19 @@ class HomeFragment : Fragment() {
                 }
             }
         dialog.btn_save.setOnClickListener {
-            dialog.dismiss()
             storyViewModel.setSection(section)
             storyViewModel.getListStories(section)
+            dialog.dismiss()
+            showDialog = false
+            progressBarHome.visibility = View.VISIBLE
         }
-        dialog.btn_cancel.setOnClickListener { dialog.dismiss() }
-        dialog.show()
+        dialog.btn_cancel.setOnClickListener {
+            showDialog = false
+            dialog.dismiss()
+        }
+        if (!showDialog)
+            dialog.show()
+        showDialog = true
     }
 
     private fun bindings() {
@@ -118,8 +132,10 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this)[StoryViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
 
+        progressBarHome.visibility = View.VISIBLE
         storyViewModel.listStoryLiveData.observe(this@HomeFragment, Observer { listStories ->
             storyAdapter.addDataStories(listStories)
+            progressBarHome.visibility = View.GONE
         })
     }
 

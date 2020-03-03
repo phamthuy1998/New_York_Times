@@ -49,4 +49,18 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="progressBar">
+        <item name="colorAccent">@color/colorBtn</item> <!-- Whatever color you want-->
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/colorTxt</item>
+        <!-- Used for the background -->
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+
 </resources>

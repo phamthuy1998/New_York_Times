@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    app:layout_goneMarginBottom="@dimen/default_margin">
 
     <TextView
         android:id="@+id/tv_title_dl"
@@ -180,17 +180,16 @@
         android:id="@+id/btn_save"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button_round_corner"
         android:backgroundTint="@color/colorLauncher"
         android:padding="@dimen/default_margin"
         android:text="@string/save"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_cancel"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_section" />
 
     <Button
         android:id="@+id/btn_cancel"

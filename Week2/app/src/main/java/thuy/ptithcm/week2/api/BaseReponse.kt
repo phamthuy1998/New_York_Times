@@ -10,6 +10,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import thuy.ptithcm.week2.model.FilterSearch
 import thuy.ptithcm.week2.model.Stories
 import thuy.ptithcm.week2.model.StorySearch
 import thuy.ptithcm.week2.util.BASE_URL
@@ -73,19 +74,74 @@ class BaseReponse {
         return buildRequest(_myApi.getListSearch(strSearch = strSearch))
     }
 
-//    fun getListFilterStory(
-//        strSearch: String,
-//        beginDay: String,
-//        endDate: String,
-//        sort: String
-//    ): Single<StorySearch> {
-//        return buildRequest(
-//            _myApi.filterSearch(
-//                strSearch = strSearch,
-//                beginDate = beginDay,
-//                endDate = endDate,
-//                sort = sort
-//            )
-//        )
-//    }
+    fun getListFilterStory(
+        strSearch: String,
+        beginDay: String,
+        endDate: String,
+        sort: String
+    ): Single<StorySearch> {
+        if (beginDay == "" && endDate == "" && sort == "")
+            return buildRequest(
+                _myApi.getListSearch(strSearch = strSearch)
+            )
+        else if (beginDay != "" && endDate != "" && sort != "")
+            return buildRequest(
+                _myApi.getListSearch1(
+                    strSearch = strSearch,
+                    beginDate = beginDay,
+                    endDate = endDate,
+                    sort = sort
+                )
+            )
+        else if (beginDay == "" && endDate != "" && sort != "")
+            return buildRequest(
+                _myApi.getListSearch2(
+                    strSearch = strSearch,
+                    endDate = endDate,
+                    sort = sort
+                )
+            )
+        else if (beginDay != "" && endDate == "" && sort != "")
+            return buildRequest(
+                _myApi.getListSearch3(
+                    strSearch = strSearch,
+                    beginDate = beginDay,
+                    sort = sort
+                )
+            )
+        else if (beginDay != "" && endDate != "" && sort == "")
+            return buildRequest(
+                _myApi.getListSearch4(
+                    strSearch = strSearch,
+                    beginDate = beginDay,
+                    endDate = endDate
+                )
+            )
+        else if (beginDay == "" && endDate == "" && sort != "")
+            return buildRequest(
+                _myApi.getListSearch5(
+                    strSearch = strSearch,
+                    sort = sort
+                )
+            )
+        else if (beginDay == "" && endDate != "" && sort == "")
+            return buildRequest(
+                _myApi.getListSearch6(
+                    strSearch = strSearch,
+                    endDate = endDate
+                )
+            )
+        else if (beginDay != "" && endDate == "" && sort == "")
+            return buildRequest(
+                _myApi.getListSearch7(
+                    strSearch = strSearch,
+                    beginDate = beginDay
+                )
+            )
+        else {
+            return buildRequest(
+                _myApi.getListSearch(strSearch = strSearch)
+            )
+        }
+    }
 }
