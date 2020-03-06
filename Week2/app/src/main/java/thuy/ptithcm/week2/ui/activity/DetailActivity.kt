@@ -31,6 +31,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        setSupportActionBar(tb_detail)
         isSearch = intent?.getBooleanExtra("iSearch", false)
         if (isSearch!!) {
             doc = intent?.getParcelableExtra("doc")
@@ -42,6 +43,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun inItView(story: Story?) {
+        collapsingTB.title = story?.title
         tvTbTitle.text = story?.title
         tv_title.text = story?.title
         Glide.with(this)
@@ -53,6 +55,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun inItView(doc: Doc?) {
+        collapsingTB.title = doc?.headline?.main
         tvTbTitle.text = doc?.headline?.main
         tv_title.text = doc?.headline?.main
         if (doc?.multimedia?.size != 0) {
@@ -81,4 +84,5 @@ class DetailActivity : AppCompatActivity() {
             customTabsIntent.launchUrl(this, Uri.parse(story?.url))
         }
     }
+
 }
